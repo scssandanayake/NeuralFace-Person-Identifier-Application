@@ -1,5 +1,5 @@
 # Person-Identifier-Application
-This application is about a person identification app with augmented reality.
+mobile application DEV project.
 
 ## Install Flutter into windows
 1) Flutter download link -> https://storage.googleapis.com/flutter_infra_release/releases/stable/windows/flutter_windows_3.16.9-stable.zip
