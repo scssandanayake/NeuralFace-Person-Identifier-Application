@@ -81,6 +81,18 @@ class AppNavigationScreen extends StatelessWidget {
                           onTapScreenTitle: () => onTapScreenTitle(
                               context, AppRoutes.resetPasswordScreen),
                         ),
+                        _buildScreenTitle(
+                          context,
+                          screenTitle: "temporary home screen",
+                          onTapScreenTitle: () => onTapScreenTitle(
+                              context, AppRoutes.homeScreenTemporaryPage),
+                        ),
+                        _buildScreenTitle(
+                          context,
+                          screenTitle: "home screen container screen",
+                          onTapScreenTitle: () => onTapScreenTitle(
+                              context, AppRoutes.homeScreenTemporaryContainerScreen),
+                        ),
                       ],
                     ),
                   ),

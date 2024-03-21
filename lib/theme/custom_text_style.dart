@@ -43,7 +43,9 @@ class CustomTextStyles {
   static get titleMediumBlack900 => theme.textTheme.titleMedium!.copyWith(
     color: appTheme.black900,
   );
-
+  static get titleMediumTeal60001 => theme.textTheme.titleMedium!.copyWith(
+    color: appTheme.teal60001,
+  );
   static get titleMediumPrimary => theme.textTheme.titleMedium!.copyWith(
         color: theme.colorScheme.primary,
       );
