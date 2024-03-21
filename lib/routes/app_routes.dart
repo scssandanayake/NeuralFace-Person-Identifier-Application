@@ -9,6 +9,8 @@ import '../presentation/login_screen/login_screen.dart';
 import '../presentation/sign_up_screen/sign_up_screen.dart';
 import '../presentation/reset_password_screen/reset_password_screen.dart';
 import '../presentation/app_navigation_screen/app_navigation_screen.dart';
+import '../presentation/home_screen_temporary_container_screen/home_screen_temporary_page.dart';
+import '../presentation/home_screen_temporary_container_screen/home_screen_temporary_container_screen.dart';
 
 class AppRoutes {
   static const String splashScreen = '/splash_screen';
@@ -35,6 +37,10 @@ class AppRoutes {
 
   static const String appNavigationScreen = '/app_navigation_screen';
 
+  static const String homeScreenTemporaryPage = '/home_screen_temporary_page';
+
+  static const String homeScreenTemporaryContainerScreen = '/home_screen_temporary_container_screen';
+
   static Map<String, WidgetBuilder> routes = {
     splashScreen: (context) => SplashScreen(),
     onboardingScreensOneScreen: (context) => OnboardingScreensOneScreen(),
@@ -45,6 +51,8 @@ class AppRoutes {
     loginScreen: (context) => LoginScreen(),
     signUpScreen: (context) => SignUpScreen(),
     resetPasswordScreen: (context) => ResetPasswordScreen(),
-    appNavigationScreen: (context) => AppNavigationScreen()
+    appNavigationScreen: (context) => AppNavigationScreen(),
+    homeScreenTemporaryPage: (context) => HomeScreenTemporaryPage(),
+    homeScreenTemporaryContainerScreen: (context) => HomeScreenTemporaryContainerScreen()
   };
 }

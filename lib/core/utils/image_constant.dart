@@ -73,7 +73,10 @@ class ImageConstant {
 
   static String imgNavUser = '$imagePath/img_nav_user.svg';
 
-
-
   static String imgPrinter = '$imagePath/img_printer.svg';
+
+  //home screen temporary screen images
+  static String imgBackgroundImage = '$imagePath/img_background_image.png';
+
+  static String imgArrowRight = '$imagePath/img_arrow_right.svg';
 }

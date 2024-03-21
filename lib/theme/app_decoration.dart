@@ -9,6 +9,9 @@ class AppDecoration {
   static BoxDecoration get fillOnPrimary => BoxDecoration(
         color: theme.colorScheme.onPrimary,
       );
+  static BoxDecoration get fillTeal => BoxDecoration(
+    color: appTheme.teal200,
+  );
 
   // Gradient decorations
   static BoxDecoration get gradientTealToLime => BoxDecoration(
@@ -48,6 +51,9 @@ class BorderRadiusStyle {
   static BorderRadius get circleBorder16 => BorderRadius.circular(
         16.h,
       );
+  static BorderRadius get roundedBorder17 => BorderRadius.circular(
+    17.h,
+  );
 
   // Rounded borders
   static BorderRadius get roundedBorder12 => BorderRadius.circular(
