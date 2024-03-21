@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "138058365193",
+    "project_id": "person-detector-2e4fa",
+    "storage_bucket": "person-detector-2e4fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138058365193:android:d9a4baf90a5d228029fbd8",
+        "android_client_info": {
+          "package_name": "com.personidentifierapplication.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfTDfFSiZapdyLOvVOivwTSSf9_PX7lew"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

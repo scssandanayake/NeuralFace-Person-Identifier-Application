@@ -1,0 +1,40 @@
+name: person_identifier_application
+description: A new Flutter project.
+version: 1.0.0+1
+environment: 
+  sdk: '>=2.17.0 <3.0.0'
+dependencies: 
+  flutter: 
+    sdk: flutter
+  cached_network_image: ^3.3.0
+  flutter_svg: ^2.0.9
+  smooth_page_indicator: ^1.1.0
+  intl: ^0.18.0
+  shared_preferences: ^2.2.2
+  cloud_firestore: ^4.15.7
+  firebase_core: ^2.26.0
+  firebase_auth: ^4.17.7
+dev_dependencies: 
+  flutter_test: 
+    sdk: flutter
+flutter: 
+  uses-material-design: true
+  assets: 
+    - assets/
+    - assets/images/
+    - assets/images/img_image_of_the_person.png
+  fonts: 
+    - family: DM Sans
+      fonts: 
+        - asset: assets/fonts/DMSansRegular.ttf
+          weight: 400
+        - asset: assets/fonts/DMSansMedium.ttf
+          weight: 500
+    - family: Roboto
+      fonts: 
+        - asset: assets/fonts/RobotoMedium.ttf
+          weight: 500
+    - family: Aclonica
+      fonts: 
+        - asset: assets/fonts/AclonicaRegular.ttf
+          weight: 400
