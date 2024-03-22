@@ -15,6 +15,10 @@ class AppDecoration {
 
   // Gradient decorations
   static BoxDecoration get gradientTealToLime => BoxDecoration(
+    border: Border.all(
+      color: appTheme.teal600,
+      width: 2.h,
+    ),
     gradient: LinearGradient(
       begin: Alignment(0.5, 0),
       end: Alignment(1, 0.59),
