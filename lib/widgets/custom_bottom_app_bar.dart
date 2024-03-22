@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:person_identifier_application/core/app_export.dart';
 
+import '../presentation/home_screen_temporary_container_screen/home_screen_temporary_page.dart';
+import '../presentation/person_details_screen/person_details_screen.dart';
+
 class CustomBottomAppBar extends StatefulWidget {
   CustomBottomAppBar({this.onChanged});
 
@@ -17,7 +20,8 @@ class CustomBottomAppBarState extends State<CustomBottomAppBar> {
         activeIcon: ImageConstant.imgNavHome,
         title: "Home",
         type: BottomBarEnum.Home,
-        isSelected: true),
+        isSelected: true,
+    ),
     /*BottomMenuModel(
       icon: ImageConstant.imgNavHistory,
       activeIcon: ImageConstant.imgNavHistory,
@@ -38,6 +42,7 @@ class CustomBottomAppBarState extends State<CustomBottomAppBar> {
     )
   ];
 
+
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -52,13 +57,33 @@ class CustomBottomAppBarState extends State<CustomBottomAppBar> {
                 (index) {
               return InkWell(
                 onTap: () {
-                  for (var element in bottomMenuList) {
-                    element.isSelected = false;
-                  }
-                  bottomMenuList[index].isSelected = true;
+                  setState(() {
+                    // Update the selected state
+                    for (var i = 0; i < bottomMenuList.length; i++) {
+                      bottomMenuList[i].isSelected = (i == index);
+                    }
+                  });
+
+                  // Call onChanged callback if provided
                   widget.onChanged?.call(bottomMenuList[index].type);
-                  setState(() {});
-                },
+
+                  // Navigate to the corresponding page
+                  switch (bottomMenuList[index].type) {
+                    case BottomBarEnum.Home:
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeScreenTemporaryPage()),
+                      );
+                      break;
+                    case BottomBarEnum.User:
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PersonDetailScreen()),
+                      );
+                      break;
+                  }
+              },
+
                 child: bottomMenuList[index].isSelected
                     ? Column(
                   mainAxisSize: MainAxisSize.min,
@@ -162,3 +187,5 @@ class DefaultWidget extends StatelessWidget {
     );
   }
 }
+
+

@@ -9,7 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 class CustomImageView extends StatelessWidget {
   ///[imagePath] is required parameter for showing image
   String? imagePath;
-
+  NetworkImage? imageProfile;
   double? height;
   double? width;
   Color? color;
@@ -24,6 +24,7 @@ class CustomImageView extends StatelessWidget {
   ///a [CustomImageView] it can be used for showing any type of images
   /// it will shows the placeholder image if image is not found on network image
   CustomImageView({
+    this.imageProfile,
     this.imagePath,
     this.height,
     this.width,
