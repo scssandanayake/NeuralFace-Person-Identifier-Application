@@ -11,6 +11,7 @@ import '../presentation/reset_password_screen/reset_password_screen.dart';
 import '../presentation/app_navigation_screen/app_navigation_screen.dart';
 import '../presentation/home_screen_temporary_container_screen/home_screen_temporary_page.dart';
 import '../presentation/home_screen_temporary_container_screen/home_screen_temporary_container_screen.dart';
+import '../presentation/start_guide_screen/start_guide_screen.dart';
 
 class AppRoutes {
   static const String splashScreen = '/splash_screen';
@@ -41,6 +42,8 @@ class AppRoutes {
 
   static const String homeScreenTemporaryContainerScreen = '/home_screen_temporary_container_screen';
 
+  static const String startGuideScreen = '/start_guide_screen';
+
   static Map<String, WidgetBuilder> routes = {
     splashScreen: (context) => SplashScreen(),
     onboardingScreensOneScreen: (context) => OnboardingScreensOneScreen(),
@@ -53,6 +56,7 @@ class AppRoutes {
     resetPasswordScreen: (context) => ResetPasswordScreen(),
     appNavigationScreen: (context) => AppNavigationScreen(),
     homeScreenTemporaryPage: (context) => HomeScreenTemporaryPage(),
-    homeScreenTemporaryContainerScreen: (context) => HomeScreenTemporaryContainerScreen()
+    homeScreenTemporaryContainerScreen: (context) => HomeScreenTemporaryContainerScreen(),
+    startGuideScreen: (context) => StartGuideScreen()
   };
 }
