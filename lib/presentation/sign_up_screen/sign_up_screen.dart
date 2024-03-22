@@ -10,6 +10,7 @@ import 'package:person_identifier_application/core/app_export.dart';
 
 import '../../home_screen.dart';
 import '../../reuseable_widget/reusable_widget.dart';
+import '../home_screen_temporary_container_screen/home_screen_temporary_page.dart';
 import '../person_details_screen/person_details_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -129,7 +130,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         final User user = userCredential.user!; // Extract the actual User object
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => PersonDetailScreen()),
+                          MaterialPageRoute(builder: (context) => HomeScreenTemporaryPage()),
                         );
                       } else {
                         print("Error creating account"); // Handle the error appropriately

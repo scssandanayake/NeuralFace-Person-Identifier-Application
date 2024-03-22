@@ -1,15 +1,49 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:person_identifier_application/widgets/app_bar/custom_app_bar.dart';
 import 'package:person_identifier_application/widgets/app_bar/appbar_title.dart';
 import 'package:flutter/material.dart';
 import 'package:person_identifier_application/core/app_export.dart';
 
-// ignore_for_file: must_be_immutable
-class HomeScreenTemporaryPage extends StatelessWidget {
-  const HomeScreenTemporaryPage({Key? key})
-      : super(
-          key: key,
-        );
+import '../../widgets/custom_bottom_app_bar.dart';
+import '../../widgets/custom_elevated_button.dart';
+import '../../widgets/custom_floating_button.dart';
 
+
+
+class HomeScreenTemporaryPage extends StatefulWidget {
+  const HomeScreenTemporaryPage({super.key});
+
+  @override
+  State<HomeScreenTemporaryPage> createState() => _HomeScreenTemporaryPageState();
+}
+
+class _HomeScreenTemporaryPageState extends State<HomeScreenTemporaryPage> {
+
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  User? _user;
+  String? _name;
+  String? _profilePicUrl;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserData();
+  }
+
+  Future<void> _fetchUserData() async {
+    _user = _auth.currentUser;
+    if (_user != null) {
+      DocumentSnapshot<Map<String, dynamic>> userData =
+      await _firestore.collection('users').doc(_user!.uid).get();
+      print("User Data: $userData"); // Debug print
+      setState(() {
+        _name = userData['name'];
+        _profilePicUrl = userData['profilePicUrl'];
+      });
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -19,7 +53,7 @@ class HomeScreenTemporaryPage extends StatelessWidget {
           width: double.maxFinite,
           padding: EdgeInsets.symmetric(
             horizontal: 20.h,
-            vertical: 9.v,
+            vertical: 20.v,
           ),
           child: Column(
             children: [
@@ -33,21 +67,21 @@ class HomeScreenTemporaryPage extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      CustomImageView(
-                        imagePath: ImageConstant.imgImage,
-                        height: 25.adaptSize,
-                        width: 25.adaptSize,
-                        radius: BorderRadius.circular(
-                          12.h,
-                        ),
-                      ),
+                      _profilePicUrl != null
+                          ? CircleAvatar(
+                        backgroundImage: NetworkImage(_profilePicUrl!),
+                        radius: 25,
+                      )
+                          : CircleAvatar(
+                        radius: 25,
+                        child: Icon(Icons.person),),
                       Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: 10.h,
                           vertical: 4.v,
                         ),
                         child: Text(
-                          "dr.Rasika",
+                          "$_name",
                           style: theme.textTheme.bodySmall,
                         ),
                       ),
@@ -55,46 +89,49 @@ class HomeScreenTemporaryPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 45.v),
-              CustomImageView(
-                imagePath: ImageConstant.imgBackgroundImage,
-                height: 260.v,
-                width: 320.h,
-              ),
-              SizedBox(height: 33.v),
-              Container(
-                width: 290.h,
-                margin: EdgeInsets.symmetric(horizontal: 15.h),
-                child: Text(
-                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the same industry's standard dummy text ever since the 1500s.!",
-                  maxLines: 4,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                  style: theme.textTheme.bodyMedium!.copyWith(
-                    height: 1.71,
-                  ),
+              Padding(
+                padding: EdgeInsets.only(top: 200.0), // Adjust top padding as needed
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 45.v),
+                    CustomElevatedButton(
+                      text: "Register",
+                      margin: EdgeInsets.symmetric(horizontal: 30.h),
+                      alignment: Alignment.center,
+                      /*onPressed: _editProfile,*/
+                    ),
+                    SizedBox(height: 33.v),
+                    CustomElevatedButton(
+                      text: "Recognize",
+                      margin: EdgeInsets.symmetric(horizontal: 30.h),
+                      alignment: Alignment.center,
+                      /*onPressed: _editProfile,*/
+                    ),
+                  ],
                 ),
               ),
+              /*onPressed: _editProfile,*/
+
               SizedBox(height: 23.v),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Quick Start Guide",
-                    style: CustomTextStyles.titleMediumTeal60001,
-                  ),
-                  CustomImageView(
-                    imagePath: ImageConstant.imgArrowRight,
-                    height: 25.adaptSize,
-                    width: 25.adaptSize,
-                    margin: EdgeInsets.only(left: 6.h),
-                  ),
-                ],
-              ),
+
               SizedBox(height: 45.v),
+
             ],
           ),
         ),
+        bottomNavigationBar: _buildSeven(context),
+        floatingActionButton: CustomFloatingButton(
+          height: 50,
+          width: 50,
+          backgroundColor: appTheme.teal600,
+          child: CustomImageView(
+            imagePath: ImageConstant.imgCamera,
+            height: 25.0.v,
+            width: 25.0.h,
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
     );
   }
@@ -108,4 +145,14 @@ class HomeScreenTemporaryPage extends StatelessWidget {
       ),
     );
   }
+
+  /// Section Widget
+  Widget _buildSeven(BuildContext context) {
+    return CustomBottomAppBar(
+      onChanged: (BottomBarEnum type) {},
+    );
+  }
 }
+
+
+

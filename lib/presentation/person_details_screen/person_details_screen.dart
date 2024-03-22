@@ -25,6 +25,7 @@ class _PersonDetailScreenState extends State<PersonDetailScreen> {
   String? _email;
   String? _phone;
   String? _role;
+  String? _profilePicUrl;
 
   @override
   void initState() {
@@ -44,6 +45,7 @@ class _PersonDetailScreenState extends State<PersonDetailScreen> {
         _email = userData['email'];
         _phone = userData['phone'];
         _role = userData['role'];
+        _profilePicUrl = userData['profilePicUrl'];
       });
     }
   }
@@ -161,31 +163,36 @@ class _PersonDetailScreenState extends State<PersonDetailScreen> {
                             ),
                           ),
 
-                        SizedBox(height: 12.v),
-                        CustomImageView(
-                          imagePath: ImageConstant.imgImageOfThePerson,
-                          height: 150.v,
-                          width: 152.h,
-                          radius: BorderRadius.circular(
-                            10.h,
+                        Center(child: SizedBox(height: 12.v)),
+                          _profilePicUrl != null
+                          ? Center(
+                            child: CircleAvatar(
+                            backgroundImage: NetworkImage(_profilePicUrl!),
+                            radius: 75,
+                            ),
+                          )
+                          : Center(
+                            child: CircleAvatar(
+                                radius: 75,
+                                child: Icon(Icons.person),),
                           ),
-                          alignment: Alignment.center,
-                        ),
-                        SizedBox(height: 20.v),
+                          Center(child: SizedBox(height: 20.v)),
                         Text(
                           "Main Details",
                           style: CustomTextStyles.titleMediumTeal600,
                         ),
                         SizedBox(height: 20.v),
-                        Container(
-                          width: 243.h,
-                          margin: EdgeInsets.only(right: 16.h),
-                          child: Text(
-                            "Name - $_name\nEmail - $_email \nID - $_ID\nRole - $_role\nMobile NO. - $_phone\n",
-                            maxLines: 12,
-                            overflow: TextOverflow.ellipsis,
-                            style: theme.textTheme.bodyMedium!.copyWith(
-                              height: 2.14,
+                        Center(
+                          child: Container(
+                            width: 243.h,
+                            margin: EdgeInsets.only(right: 16.h),
+                            child: Text(
+                              "Name - $_name\nEmail - $_email \nID - $_ID\nRole - $_role\nMobile NO. - $_phone\n",
+                              maxLines: 12,
+                              overflow: TextOverflow.ellipsis,
+                              style: theme.textTheme.bodyMedium!.copyWith(
+                                height: 2.14,
+                              ),
                             ),
                           ),
                         ),
