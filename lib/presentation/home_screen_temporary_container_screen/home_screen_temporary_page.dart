@@ -5,6 +5,8 @@ import 'package:person_identifier_application/widgets/app_bar/appbar_title.dart'
 import 'package:flutter/material.dart';
 import 'package:person_identifier_application/core/app_export.dart';
 
+import '../../RecognitionScreen.dart';
+import '../../RegistrationScreen.dart';
 import '../../widgets/custom_bottom_app_bar.dart';
 import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_floating_button.dart';
@@ -46,6 +48,8 @@ class _HomeScreenTemporaryPageState extends State<HomeScreenTemporaryPage> {
   }
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
         appBar: _buildAppBar(context),
@@ -89,23 +93,32 @@ class _HomeScreenTemporaryPageState extends State<HomeScreenTemporaryPage> {
                   ),
                 ),
               ),
+
+
               Padding(
                 padding: EdgeInsets.only(top: 200.0), // Adjust top padding as needed
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(height: 45.v),
+                                     SizedBox(height: 45.v),
                     CustomElevatedButton(
                       text: "Register",
                       margin: EdgeInsets.symmetric(horizontal: 30.h),
                       alignment: Alignment.center,
-                      /*onPressed: _editProfile,*/
-                    ),
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (
+                            context) => const RegistrationScreen()));
+                        /*onPressed: _editProfile,*/
+                      }),
                     SizedBox(height: 33.v),
                     CustomElevatedButton(
                       text: "Recognize",
                       margin: EdgeInsets.symmetric(horizontal: 30.h),
                       alignment: Alignment.center,
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const RecognitionScreen()));
+                      },
                       /*onPressed: _editProfile,*/
                     ),
                   ],
