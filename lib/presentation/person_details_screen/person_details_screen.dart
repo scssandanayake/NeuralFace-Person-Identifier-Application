@@ -193,7 +193,6 @@ class _PersonDetailScreenState extends State<PersonDetailScreen> {
                         CustomElevatedButton(
                           text: "Update",
                           margin: EdgeInsets.symmetric(horizontal: 30.h),
-                          buttonStyle: CustomButtonStyles.fillTeal,
                           alignment: Alignment.center,
                           onPressed: _editProfile,
                         ),
