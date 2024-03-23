@@ -11,6 +11,7 @@ import 'package:person_identifier_application/core/app_export.dart';
 
 import '../../home_screen.dart';
 import '../../reuseable_widget/reusable_widget.dart';
+import '../home_screen_temporary_container_screen/home_screen_temporary_page.dart';
 import '../person_details_screen/person_details_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -136,7 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       FirebaseAuth.instance.signInWithEmailAndPassword(
                           email: _emailTextController.text,
                           password: _passwordTextController.text).then((value) {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => PersonDetailScreen()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreenTemporaryPage()));
                       });
                     }),
                     SizedBox(height: 17.v),
