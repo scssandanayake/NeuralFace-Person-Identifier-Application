@@ -14,3 +14,4 @@ mobile application DEV project.
 - Tutorial - https://youtu.be/fxSKQPG37IA?si=rhZz2NNcbAtk5aYJ
 3) GIT - https://gitforwindows.org/
 4) Visual Studio Code ( VSCode ) - https://code.visualstudio.com/Download
+5) project is almost done.
