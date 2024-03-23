@@ -6,6 +6,7 @@ import 'package:person_identifier_application/widgets/custom_floating_button.dar
 import 'package:flutter/material.dart';
 import 'package:person_identifier_application/core/app_export.dart';
 
+import '../../real_time.dart';
 import '../login_screen/login_screen.dart';
 
 class PersonDetailScreen extends StatefulWidget {
@@ -226,15 +227,18 @@ class _PersonDetailScreenState extends State<PersonDetailScreen> {
           ),
         ),
         bottomNavigationBar: _buildSeven(context),
-        floatingActionButton: CustomFloatingButton(
-          height: 50,
-          width: 50,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => RealTimeModel()));
+          },
           backgroundColor: appTheme.teal600,
+
           child: CustomImageView(
             imagePath: ImageConstant.imgCamera,
             height: 25.0.v,
             width: 25.0.h,
           ),
+
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
