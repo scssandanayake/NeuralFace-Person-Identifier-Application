@@ -36,8 +36,8 @@ class MainLoginSignUpScreen extends StatelessWidget {
                 width: 288.h,
                 margin: EdgeInsets.symmetric(horizontal: 15.h),
                 child: Text(
-                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ",
-                  maxLines: 2,
+                  "Enhance your security with NeuralFace, the person detection solution, now just a tap away on your home screen",
+                  maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
                   style: CustomTextStyles.bodyMediumBlack900_1.copyWith(
