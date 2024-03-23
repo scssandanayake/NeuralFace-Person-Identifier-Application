@@ -59,7 +59,7 @@ class OnboardingScreensFourScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Welcome to Surf.",
+                        "Let's Get Started...",
                         style: CustomTextStyles.headlineSmallDMSansBlack900,
                       ),
                       SizedBox(height: 15.v),
@@ -67,7 +67,7 @@ class OnboardingScreensFourScreen extends StatelessWidget {
                         width: 290.h,
                         margin: EdgeInsets.symmetric(horizontal: 5.h),
                         child: Text(
-                          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the same industry's standard dummy text ever since the 1500s.!",
+                          "With NeuralFace, and take control of your security with intuitive person identification at your fingertips.",
                           maxLines: 4,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,

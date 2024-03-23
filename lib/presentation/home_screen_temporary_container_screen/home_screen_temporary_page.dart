@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:person_identifier_application/real_time.dart';
 import 'package:person_identifier_application/widgets/app_bar/custom_app_bar.dart';
 import 'package:person_identifier_application/widgets/app_bar/appbar_title.dart';
 import 'package:flutter/material.dart';
@@ -134,15 +135,19 @@ class _HomeScreenTemporaryPageState extends State<HomeScreenTemporaryPage> {
           ),
         ),
         bottomNavigationBar: _buildSeven(context),
-        floatingActionButton: CustomFloatingButton(
-          height: 50,
-          width: 50,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => RealTimeModel()));
+          },
           backgroundColor: appTheme.teal600,
+
           child: CustomImageView(
             imagePath: ImageConstant.imgCamera,
             height: 25.0.v,
             width: 25.0.h,
           ),
+
+
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
