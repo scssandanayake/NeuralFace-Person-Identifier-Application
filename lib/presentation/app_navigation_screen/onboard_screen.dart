@@ -69,7 +69,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                 builder: (context) => const HomeScreen()));*/
                       },
                       child: Text(
-                          'skip',
+                          'Skip',
                           style: theme.textTheme.titleMedium?.copyWith(color: Color(0xFF1F8A70)),
                       ),
                     ),
@@ -102,7 +102,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         );
                       },
                       child: Text(
-                          'done',
+                          'Done',
                            style: theme.textTheme.titleMedium?.copyWith(color: Color(0xFF1F8A70)),
                       ),
                     )
@@ -114,7 +114,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         );
                       },
                       child: Text(
-                          'next',
+                          'Next',
 
                         style: theme.textTheme.titleMedium?.copyWith(color: Color(0xFF1F8A70)),
 
