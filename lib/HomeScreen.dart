@@ -29,12 +29,12 @@ class _HomePageState extends State<HomeScreen> {
                 ElevatedButton(onPressed: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>const RegistrationScreen()));
                 },
-                  style: ElevatedButton.styleFrom(minimumSize: Size(screenWidth-30, 50)), child: const Text("Register"),),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.green, minimumSize: Size(screenWidth-30, 50)), child: const Text("Register Face"),),
                 Container(height: 20,),
                 ElevatedButton(onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>const RecognitionScreen()));
                 },
-                  style: ElevatedButton.styleFrom(minimumSize: Size(screenWidth-30, 50)), child: const Text("Recognize"),),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.green, minimumSize: Size(screenWidth-30, 50)), child: const Text("Recognize Face"),),
               ],
             ),
           ),

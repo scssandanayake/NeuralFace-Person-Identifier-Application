@@ -85,30 +85,30 @@ class Recognizer {
 
   Recognition recognize(img.Image image,Rect location) {
 
-    //Crop face from image resize it and convert it to float array
+    //Cropping face from image, resizing it and converting it to a float array
     var input = imageToArray(image);
     print(input.shape.toString());
 
     //Output array
     List output = List.filled(1*512, 0).reshape([1,512]);
 
-    //Performs inference
+    //Performing inference
     final runs = DateTime.now().millisecondsSinceEpoch;
     interpreter.run(input, output);
     final run = DateTime.now().millisecondsSinceEpoch - runs;
     print('Time to run inference: $run ms$output');
 
-    //Convert dynamic list to double list
+    //Converting dynamic list to a double list
      List<double> outputArray = output.first.cast<double>();
 
-     //Looks for the nearest embeeding in the database and returns the pair
+     //Looking for the nearest embedding in the database and returns the pair
      Pair pair = findNearest(outputArray);
      print("distance= ${pair.distance}");
 
      return Recognition(pair.name,location,outputArray,pair.distance);
   }
 
-  //Looks for the nearest embedding in the database and returns the pair which contain information of registered face with which face is most similar
+  //Looking for the nearest embedding in the database and returns the pair which contain information of registered face with which face is most similar
   findNearest(List<double> emb){
     Pair pair = Pair("Unknown", -5);
     for (MapEntry<String, Recognition> item in registered.entries) {

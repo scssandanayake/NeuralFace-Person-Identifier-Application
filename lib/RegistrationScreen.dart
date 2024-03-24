@@ -19,31 +19,31 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _HomePageState extends State<RegistrationScreen> {
-  //TODO declare variables
+  //Declaring variables
   late ImagePicker imagePicker;
   File? _image;
 
-  //TODO declare detector
+  //Declaring face detector
   late FaceDetector faceDetector;
 
-  //TODO declare face recognizer
+  //Declaring face recognizer
   late Recognizer recognizer;
   @override
   void initState() {
-    // TODO: implement initState
+    //Implementing initState
     super.initState();
     imagePicker = ImagePicker();
 
-    //TODO initialize face detector
+    //Initializing face detector
     final options = FaceDetectorOptions();
     faceDetector = FaceDetector(options: options);
 
 
-    //TODO initialize face recognizer
+    //Initializing face recognizer
     recognizer = Recognizer();
   }
 
-  //TODO capture image using camera
+  //Capturing images using camera
   _imgFromCamera() async {
     XFile? pickedFile = await imagePicker.pickImage(source: ImageSource.camera);
     if (pickedFile != null) {
@@ -54,7 +54,7 @@ class _HomePageState extends State<RegistrationScreen> {
     }
   }
 
-  //TODO choose image using gallery
+  //Choosing an image from gallery
   _imgFromGallery() async {
     XFile? pickedFile =
         await imagePicker.pickImage(source: ImageSource.gallery);
@@ -66,16 +66,16 @@ class _HomePageState extends State<RegistrationScreen> {
     }
   }
 
-  //TODO face detection code here
+  //Face detection
   List<Face> faces = [];
   doFaceDetection() async {
-    //TODO remove rotation of camera images
+    //Removing rotation of camera images
     _image = await removeRotation(_image!);
 
     image = await _image?.readAsBytes();
     image = await decodeImageFromList(image);
 
-    //TODO passing input to face detector and getting detected faces
+    //Passing input to face detector and getting detected faces
     InputImage inputImage = InputImage.fromFile(_image!);
     faces = await faceDetector.processImage(inputImage);
     for (Face face in faces) {
@@ -87,7 +87,7 @@ class _HomePageState extends State<RegistrationScreen> {
       num width = right - left;
       num height = bottom - top;
 
-      //TODO crop face
+      //Cropping faces
       final bytes = _image!.readAsBytesSync();//await File(cropedFace!.path).readAsBytes();
       img.Image? faceImg = img.decodeImage(bytes!);
       img.Image faceImg2 = img.copyCrop(faceImg!,x:left.toInt(),y:top.toInt(),width:width.toInt(),height:height.toInt());
@@ -97,19 +97,19 @@ class _HomePageState extends State<RegistrationScreen> {
     }
     drawRectangleAroundFaces();
 
-    //TODO call the method to perform face recognition on detected faces
+    //Calling the method to perform face recognition on detected faces
   }
 
-  //TODO remove rotation of camera images
+  //Remove rotation of camera images
   removeRotation(File inputImage) async {
     final img.Image? capturedImage = img.decodeImage(await File(inputImage!.path).readAsBytes());
     final img.Image orientedImage = img.bakeOrientation(capturedImage!);
     return await File(_image!.path).writeAsBytes(img.encodeJpg(orientedImage));
   }
 
-  //TODO perform Face Recognition
+  //Performing Face Recognition
 
-  //TODO Face Registration Dialogue
+  //Face Registration Dialogue
   TextEditingController textEditingController = TextEditingController();
   showFaceRegistrationDialogue(Uint8List cropedFace, Recognition recognition){
     showDialog(
@@ -128,10 +128,10 @@ class _HomePageState extends State<RegistrationScreen> {
                 height: 200,
               ),
               SizedBox(
-                width: 200,
+                width: 300,
                 child: TextField(
                   controller: textEditingController,
-                    decoration: const InputDecoration( fillColor: Colors.white, filled: true,hintText: "Enter Name")
+                    decoration: const InputDecoration( fillColor: Colors.white, filled: true,hintText: "Enter Name & ID No..")
                 ),
               ),
               const SizedBox(height: 10,),
@@ -144,14 +144,19 @@ class _HomePageState extends State<RegistrationScreen> {
                       content: Text("Face Registered"),
                     ));
                   },style: ElevatedButton.styleFrom(backgroundColor:Colors.blue,minimumSize: const Size(200,40)),
-                  child: const Text("Register"))
+                  child: Text(
+                    "Register",
+                    style: TextStyle(
+                      color: Colors.black54, // Change this to the desired color
+                    ),
+                  ))
             ],
           ),
         ),contentPadding: EdgeInsets.zero,
       ),
     );
   }
-  //TODO draw rectangles
+  //Drawing rectangles
   var image;
   drawRectangleAroundFaces() async {
     image = await _image?.readAsBytes();
@@ -224,7 +229,7 @@ class _HomePageState extends State<RegistrationScreen> {
                       width: screenWidth / 2 - 70,
                       height: screenWidth / 2 - 70,
                       child: Icon(Icons.image,
-                          color: Colors.blue, size: screenWidth / 7),
+                          color: Colors.green, size: screenWidth / 7),
                     ),
                   ),
                 ),
@@ -239,7 +244,7 @@ class _HomePageState extends State<RegistrationScreen> {
                       width: screenWidth / 2 - 70,
                       height: screenWidth / 2 - 70,
                       child: Icon(Icons.camera,
-                          color: Colors.blue, size: screenWidth / 7),
+                          color: Colors.green, size: screenWidth / 7),
                     ),
                   ),
                 )

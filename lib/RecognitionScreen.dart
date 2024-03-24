@@ -17,22 +17,22 @@ class RecognitionScreen extends StatefulWidget {
 }
 
 class _HomePageState extends State<RecognitionScreen> {
-  //Declare variables
+  //Declaring variables
   late ImagePicker imagePicker;
   File? _image;
 
-  //Declare face detector
+  //Declaring face detector
   late FaceDetector faceDetector;
 
-  //Declare face recognizer
+  //Declaring face recognizer
   late Recognizer recognizer;
   @override
   void initState() {
-    //Implement initState
+    //Implementing initState
     super.initState();
     imagePicker = ImagePicker();
 
-    //Initialize face detector
+    //Initializing face detector
     final options = FaceDetectorOptions();
     faceDetector = FaceDetector(options: options);
 
@@ -51,7 +51,7 @@ class _HomePageState extends State<RecognitionScreen> {
     }
   }
 
-  //Choose images using gallery
+  //Chooseing images using gallery
   _imgFromGallery() async {
     XFile? pickedFile =
     await imagePicker.pickImage(source: ImageSource.gallery);
@@ -67,7 +67,7 @@ class _HomePageState extends State<RecognitionScreen> {
   List<Face> faces = [];
   doFaceDetection() async {
     recognitions.clear();
-    //Remove rotation of camera images
+    //Removing rotation of camera images
     _image = await removeRotation(_image!);
 
     image = await _image?.readAsBytes();
@@ -99,7 +99,7 @@ class _HomePageState extends State<RecognitionScreen> {
     //Calling the method to perform face recognition on detected faces
   }
 
-  //Remove rotation of camera images
+  //Removing rotation of camera images
   removeRotation(File inputImage) async {
     final img.Image? capturedImage = img.decodeImage(await File(inputImage!.path).readAsBytes());
     final img.Image orientedImage = img.bakeOrientation(capturedImage!);
@@ -126,10 +126,10 @@ class _HomePageState extends State<RecognitionScreen> {
                 height: 200,
               ),
               SizedBox(
-                width: 200,
+                width: 300,
                 child: TextField(
                     controller: textEditingController,
-                    decoration: const InputDecoration( fillColor: Colors.white, filled: true,hintText: "Enter Name")
+                    decoration: const InputDecoration( fillColor: Colors.white, filled: true,hintText: "Enter Name & Student ID..")
                 ),
               ),
               const SizedBox(height: 10,),
@@ -224,7 +224,7 @@ class _HomePageState extends State<RecognitionScreen> {
                       width: screenWidth / 2 - 70,
                       height: screenWidth / 2 - 70,
                       child: Icon(Icons.image,
-                          color: Colors.blue, size: screenWidth / 7),
+                          color: Colors.green, size: screenWidth / 7),
                     ),
                   ),
                 ),
@@ -239,7 +239,7 @@ class _HomePageState extends State<RecognitionScreen> {
                       width: screenWidth / 2 - 70,
                       height: screenWidth / 2 - 70,
                       child: Icon(Icons.camera,
-                          color: Colors.blue, size: screenWidth / 7),
+                          color: Colors.green, size: screenWidth / 7),
                     ),
                   ),
                 )

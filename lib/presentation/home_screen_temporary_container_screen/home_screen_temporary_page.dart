@@ -104,7 +104,7 @@ class _HomeScreenTemporaryPageState extends State<HomeScreenTemporaryPage> {
                     SizedBox(height: 45.v),
                                      SizedBox(height: 45.v),
                     CustomElevatedButton(
-                      text: "Register",
+                      text: "Register Face",
                       margin: EdgeInsets.symmetric(horizontal: 30.h),
                       alignment: Alignment.center,
                       onPressed: () {
@@ -114,7 +114,7 @@ class _HomeScreenTemporaryPageState extends State<HomeScreenTemporaryPage> {
                       }),
                     SizedBox(height: 33.v),
                     CustomElevatedButton(
-                      text: "Recognize",
+                      text: "Recognize Face",
                       margin: EdgeInsets.symmetric(horizontal: 30.h),
                       alignment: Alignment.center,
                       onPressed: (){

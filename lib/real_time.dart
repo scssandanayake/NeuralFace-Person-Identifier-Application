@@ -30,10 +30,10 @@ class _RealTimeModelState extends State<RealTimeModel> {
   CameraLensDirection camDirec = CameraLensDirection.front;
   late List<Recognition> recognitions = [];
 
-  //TODO declare face detector
+  //Declaring face detector
   late FaceDetector detector;
 
-  //TODO declare face recognizer
+  //Declaring face recognizer
   late Recognizer recognizer;
 
 
@@ -41,17 +41,17 @@ class _RealTimeModelState extends State<RealTimeModel> {
   void initState() {
     super.initState();
 
-    //TODO initialize face detector
+    //Initializing face detector
     detector = FaceDetector(options: FaceDetectorOptions(performanceMode: FaceDetectorMode.fast));
 
-    //TODO initialize face recognizer
+    //Initializing face recognizer
     recognizer = Recognizer();
 
-    //TODO initialize camera footage
+    //Initializing camera footage
     initializeCamera();
   }
 
-  //TODO code to initialize the camera feed
+  //Initializing the camera feed
   initializeCamera() async {
     controller = CameraController(description, ResolutionPreset.medium);
     await controller.initialize().then((_) {
@@ -64,27 +64,27 @@ class _RealTimeModelState extends State<RealTimeModel> {
     });
   }
 
-  //TODO close all resources
+  //Closing all resources
   @override
   void dispose() {
     controller?.dispose();
     super.dispose();
   }
 
-  //TODO face detection on a frame
+  //Performing Face detection on a frame
   dynamic _scanResults;
   CameraImage? frame;
   doFaceDetectionOnFrame() async {
-    //TODO convert frame into InputImage format
+    //Converting frame into InputImage format
     InputImage inputImage = getInputImage();
 
-    //TODO pass InputImage to face detection model and detect faces
+    //Passing InputImage to face detection model and detect faces
     List<Face> faces = await detector.processImage(inputImage);
     for(Face face in faces){
       print("Face Location "+face.boundingBox.toString());
     }
 
-    //TODO perform face recognition on detected faces
+    //Performing face recognition on detected faces
     performFaceRecognition(faces);
 
     // setState(() {
@@ -95,27 +95,27 @@ class _RealTimeModelState extends State<RealTimeModel> {
 
   img.Image? image;
   bool register = false;
-  // TODO perform Face Recognition
+  //Performing Face Recognition
   performFaceRecognition(List<Face> faces) async {
     recognitions.clear();
 
-    //TODO convert CameraImage to Image and rotate it so that our frame will be in a portrait
+    //Converting CameraImage to Image and rotate it so that the frame will be in portrait mode
     image = convertYUV420ToImage(frame!);
     image =img.copyRotate(image!, angle: camDirec == CameraLensDirection.front?270:90);
 
     for (Face face in faces) {
       Rect faceRect = face.boundingBox;
-      //TODO crop face
+      //Cropping face
       img.Image croppedFace = img.copyCrop(image!, x:faceRect.left.toInt(),y:faceRect.top.toInt(),width:faceRect.width.toInt(),height:faceRect.height.toInt());
 
-      //TODO pass cropped face to face recognition model
+      //Passing cropped face to face recognition model
       Recognition recognition = recognizer.recognize(croppedFace, face.boundingBox);
       if(recognition.distance>1){
         recognition.name = "Unknown";
       }
       recognitions.add(recognition);
 
-      //TODO show face registration dialogue
+      //Showing face registration dialogue
       if(register){
         showFaceRegistrationDialogue(croppedFace, recognition);
         register = false;
@@ -131,7 +131,7 @@ class _RealTimeModelState extends State<RealTimeModel> {
 
   }
 
-  //TODO Face Registration Dialogue
+  //Face Registration Dialogue
   TextEditingController textEditingController = TextEditingController();
   showFaceRegistrationDialogue(img.Image croppedFace, Recognition recognition){
     showDialog(
@@ -146,10 +146,10 @@ class _RealTimeModelState extends State<RealTimeModel> {
               const SizedBox(height: 20,),
               Image.memory(Uint8List.fromList(img.encodeBmp(croppedFace!)),width: 200,height: 200,),
               SizedBox(
-                width: 200,
+                width: 300,
                 child: TextField(
                     controller: textEditingController,
-                    decoration: const InputDecoration( fillColor: Colors.white, filled: true,hintText: "Enter Name")
+                    decoration: const InputDecoration( fillColor: Colors.white, filled: true,hintText: "Enter Name & Student ID..")
                 ),
               ),
               const SizedBox(height: 10,),
@@ -162,7 +162,12 @@ class _RealTimeModelState extends State<RealTimeModel> {
                       content: Text("Face Registered"),
                     ));
                   },style: ElevatedButton.styleFrom(backgroundColor: Colors.blue,minimumSize: const Size(200,40)),
-                  child: const Text("Register"))
+                  child: Text(
+                    "Register",
+                    style: TextStyle(
+                      color: Colors.black54, // Change this to the desired color
+                    ),
+                  ))
             ],
           ),
         ),contentPadding: EdgeInsets.zero,
@@ -171,7 +176,7 @@ class _RealTimeModelState extends State<RealTimeModel> {
   }
 
 
-  // TODO method to convert CameraImage to Image
+  //Method to convert CameraImage to Image
   img.Image convertYUV420ToImage(CameraImage cameraImage) {
     final width = cameraImage.width;
     final height = cameraImage.height;
@@ -215,7 +220,7 @@ class _RealTimeModelState extends State<RealTimeModel> {
     (r & 0xff);
   }
 
-  //TODO convert CameraImage to InputImage
+  //Converting CameraImage to InputImage
   InputImage getInputImage() {
     final WriteBuffer allBytes = WriteBuffer();
     for (final Plane plane in frame!.planes) {
@@ -247,7 +252,7 @@ class _RealTimeModelState extends State<RealTimeModel> {
     return inputImage;
   }
 
-  // TODO Show rectangles around detected faces
+  //Showing rectangles around detected faces
   Widget buildResult() {
     if (_scanResults == null ||
         controller == null ||
@@ -264,7 +269,7 @@ class _RealTimeModelState extends State<RealTimeModel> {
     );
   }
 
-  //TODO toggle camera direction
+  //Toggle camera direction
   void _toggleCameraDirection() async {
     if (camDirec == CameraLensDirection.back) {
       camDirec = CameraLensDirection.front;
@@ -287,7 +292,7 @@ class _RealTimeModelState extends State<RealTimeModel> {
     size = MediaQuery.of(context).size;
     if (controller != null) {
 
-      //TODO View for displaying the live camera footage
+      //Displaying the live camera footage
       stackChildren.add(
         Positioned(
           top: 0.0,
@@ -305,7 +310,7 @@ class _RealTimeModelState extends State<RealTimeModel> {
         ),
       );
 
-      //TODO View for displaying rectangles around detected aces
+      //Displaying rectangles around detected aces
       stackChildren.add(
         Positioned(
             top: 0.0,
@@ -316,7 +321,7 @@ class _RealTimeModelState extends State<RealTimeModel> {
       );
     }
 
-    //TODO View for displaying the bar to switch camera direction or for registering faces
+    //Displaying the bar to switch camera direction or for registering faces
     stackChildren.add(Positioned(
       top: size.height - 140,
       left: 0,
@@ -324,7 +329,7 @@ class _RealTimeModelState extends State<RealTimeModel> {
       height: 80,
       child: Card(
         margin: const EdgeInsets.only(left: 20, right: 20),
-        color: Colors.blue,
+        color: Colors.green,
         child: Center(
           child: Container(
             child: Column(
