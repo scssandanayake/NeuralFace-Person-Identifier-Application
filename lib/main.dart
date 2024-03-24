@@ -3,11 +3,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:person_identifier_application/presentation/app_navigation_screen/onboard_screen.dart';
 import 'package:person_identifier_application/presentation/home_screen_temporary_container_screen/home_screen_temporary_container_screen.dart';
 import 'package:person_identifier_application/presentation/home_screen_temporary_container_screen/home_screen_temporary_page.dart';
 import 'package:person_identifier_application/presentation/main_login_sign_up_screen/main_login_sign_up_screen.dart';
 import 'package:person_identifier_application/presentation/main_login_sign_up_screen/main_login_sign_up_screen.dart';
-import 'package:person_identifier_application/presentation/sign_up_screen/sign_up_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/app_export.dart';
 import 'firebase_options.dart';
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           /*initialRoute: AppRoutes.splashScreen,
           routes: AppRoutes.routes,*/
-          home: HomeScreenTemporaryPage(),
+          home: OnBoardingScreen(),
         );
       },
     );
