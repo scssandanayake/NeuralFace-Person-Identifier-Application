@@ -7,6 +7,7 @@ import 'package:person_identifier_application/presentation/home_screen_temporary
 import 'package:person_identifier_application/presentation/home_screen_temporary_container_screen/home_screen_temporary_page.dart';
 import 'package:person_identifier_application/presentation/main_login_sign_up_screen/main_login_sign_up_screen.dart';
 import 'package:person_identifier_application/presentation/main_login_sign_up_screen/main_login_sign_up_screen.dart';
+import 'package:person_identifier_application/presentation/sign_up_screen/sign_up_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/app_export.dart';
 import 'firebase_options.dart';
@@ -43,9 +44,9 @@ class MyApp extends StatelessWidget {
           theme: theme,
           title: 'person_identifier_application',
           debugShowCheckedModeBanner: false,
-          initialRoute: AppRoutes.splashScreen,
-          routes: AppRoutes.routes,
-          /*home: HomeScreenTemporaryPage(),*/
+          /*initialRoute: AppRoutes.splashScreen,
+          routes: AppRoutes.routes,*/
+          home: HomeScreenTemporaryPage(),
         );
       },
     );

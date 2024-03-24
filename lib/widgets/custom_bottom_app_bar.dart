@@ -93,18 +93,18 @@ class CustomBottomAppBarState extends State<CustomBottomAppBar> {
                       imagePath: bottomMenuList[index].activeIcon,
                       height: 18.adaptSize,
                       width: 18.adaptSize,
-                      color: appTheme.teal600,
+                      /*color: appTheme.teal600,*/
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 1.v),
                       child: Text(
                         bottomMenuList[index].title ?? "",
-                        style:
+                        /*style:
                         CustomTextStyles.labelLargeTeal600.copyWith(
-                          color: appTheme.teal600,
+                          color: appTheme.teal600,*/
                         ),
                       ),
-                    ),
+
                   ],
                 )
                     : Column(
@@ -112,7 +112,7 @@ class CustomBottomAppBarState extends State<CustomBottomAppBar> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     CustomImageView(
-                      imagePath: bottomMenuList[index].icon,
+                      imagePath: bottomMenuList[1].icon,
                       height: 18.adaptSize,
                       width: 18.adaptSize,
                       color: appTheme.black900,
@@ -121,14 +121,14 @@ class CustomBottomAppBarState extends State<CustomBottomAppBar> {
                       padding: EdgeInsets.only(top: 3.v),
                       child: Text(
                         bottomMenuList[index].title ?? "",
-                        style: theme.textTheme.labelLarge!.copyWith(
-                          color: appTheme.black900,
+                        /*style: theme.textTheme.labelLarge!.copyWith(
+                          color: appTheme.black900,*/
                         ),
                       ),
-                    ),
+
                   ],
-                ),
-              );
+                ));
+
             },
           ),
         ),

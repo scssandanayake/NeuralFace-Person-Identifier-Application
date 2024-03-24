@@ -139,28 +139,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
 
                     SizedBox(height: 20.v),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CustomImageView(
-                            imagePath: ImageConstant.imgGoogleAuth,
-                            height: 30.adaptSize,
-                            width: 30.adaptSize,
-                          ),
-                          CustomImageView(
-                            imagePath: ImageConstant.imgGrid,
-                            height: 25.adaptSize,
-                            width: 25.adaptSize,
-                            margin: EdgeInsets.only(
-                              left: 20.h,
-                              bottom: 3.v,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+
 
                     SizedBox(height: 5.v),
                   ],
