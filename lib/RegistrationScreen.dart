@@ -207,7 +207,7 @@ class _HomePageState extends State<RegistrationScreen> {
             height: 50,
           ),
 
-          //TODO section which displays buttons for choosing and capturing images
+          //Section which displays buttons for choosing and capturing images
           Container(
             margin: const EdgeInsets.only(bottom: 50),
             child: Row(

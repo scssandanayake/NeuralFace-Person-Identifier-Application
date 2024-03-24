@@ -17,30 +17,30 @@ class RecognitionScreen extends StatefulWidget {
 }
 
 class _HomePageState extends State<RecognitionScreen> {
-  //TODO declare variables
+  //Declare variables
   late ImagePicker imagePicker;
   File? _image;
 
-  //TODO declare detector
+  //Declare face detector
   late FaceDetector faceDetector;
 
-  //TODO declare face recognizer
+  //Declare face recognizer
   late Recognizer recognizer;
   @override
   void initState() {
-    // TODO: implement initState
+    //Implement initState
     super.initState();
     imagePicker = ImagePicker();
 
-    //TODO initialize face detector
+    //Initialize face detector
     final options = FaceDetectorOptions();
     faceDetector = FaceDetector(options: options);
 
-    //TODO initialize face recognizer
+    //Initialize face recognizer
     recognizer = Recognizer();
   }
 
-  //TODO capture image using camera
+  //Capturing image using camera
   _imgFromCamera() async {
     XFile? pickedFile = await imagePicker.pickImage(source: ImageSource.camera);
     if (pickedFile != null) {
@@ -51,7 +51,7 @@ class _HomePageState extends State<RecognitionScreen> {
     }
   }
 
-  //TODO choose image using gallery
+  //Choose images using gallery
   _imgFromGallery() async {
     XFile? pickedFile =
     await imagePicker.pickImage(source: ImageSource.gallery);
@@ -63,17 +63,17 @@ class _HomePageState extends State<RecognitionScreen> {
     }
   }
 
-  //TODO face detection code here
+  //Face detection
   List<Face> faces = [];
   doFaceDetection() async {
     recognitions.clear();
-    //TODO remove rotation of camera images
+    //Remove rotation of camera images
     _image = await removeRotation(_image!);
 
     image = await _image?.readAsBytes();
     image = await decodeImageFromList(image);
 
-    //TODO passing input to face detector and getting detected faces
+    //Passing input to face detector and getting detected faces
     InputImage inputImage = InputImage.fromFile(_image!);
     faces = await faceDetector.processImage(inputImage);
     for (Face face in faces) {
@@ -85,7 +85,7 @@ class _HomePageState extends State<RecognitionScreen> {
       num width = right - left;
       num height = bottom - top;
 
-      //TODO crop face
+      //Cropping faces
       final bytes = _image!.readAsBytesSync();//await File(cropedFace!.path).readAsBytes();
       img.Image? faceImg = img.decodeImage(bytes!);
       img.Image faceImg2 = img.copyCrop(faceImg!,x:left.toInt(),y:top.toInt(),width:width.toInt(),height:height.toInt());
@@ -96,19 +96,18 @@ class _HomePageState extends State<RecognitionScreen> {
     }
     drawRectangleAroundFaces();
 
-    //TODO call the method to perform face recognition on detected faces
+    //Calling the method to perform face recognition on detected faces
   }
 
-  //TODO remove rotation of camera images
+  //Remove rotation of camera images
   removeRotation(File inputImage) async {
     final img.Image? capturedImage = img.decodeImage(await File(inputImage!.path).readAsBytes());
     final img.Image orientedImage = img.bakeOrientation(capturedImage!);
     return await File(_image!.path).writeAsBytes(img.encodeJpg(orientedImage));
   }
 
-  //TODO perform Face Recognition
 
-  //TODO Face Registration Dialogue
+  //Face Registration Dialogue
   TextEditingController textEditingController = TextEditingController();
   showFaceRegistrationDialogue(Uint8List cropedFace, Recognition recognition){
     showDialog(
@@ -150,7 +149,7 @@ class _HomePageState extends State<RecognitionScreen> {
       ),
     );
   }
-  //TODO draw rectangles
+  //Draw rectangles
   var image;
   drawRectangleAroundFaces() async {
     image = await _image?.readAsBytes();
@@ -208,7 +207,7 @@ class _HomePageState extends State<RecognitionScreen> {
             height: 50,
           ),
 
-          //TODO section which displays buttons for choosing and capturing images
+          //Section which displays buttons for choosing and capturing images
           Container(
             margin: const EdgeInsets.only(bottom: 50),
             child: Row(
