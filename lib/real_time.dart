@@ -149,7 +149,7 @@ class _RealTimeModelState extends State<RealTimeModel> {
                 width: 300,
                 child: TextField(
                     controller: textEditingController,
-                    decoration: const InputDecoration( fillColor: Colors.white, filled: true,hintText: "Enter Name & Student ID..")
+                    decoration: const InputDecoration( fillColor: Colors.white, filled: true,hintText: "Enter Name - ID No..")
                 ),
               ),
               const SizedBox(height: 10,),
@@ -165,7 +165,7 @@ class _RealTimeModelState extends State<RealTimeModel> {
                   child: Text(
                     "Register",
                     style: TextStyle(
-                      color: Colors.black54, // Change this to the desired color
+                      color: Colors.black54,
                     ),
                   ))
             ],
@@ -422,7 +422,7 @@ class FaceDetectorPainter extends CustomPainter {
       );
 
       TextSpan span = TextSpan(
-          style: const TextStyle(color: Colors.white, fontSize: 20),
+          style: const TextStyle(color: Colors.white, fontSize: 40),
           text: "${face.name}  ${face.distance.toStringAsFixed(2)}");
       TextPainter tp = TextPainter(
           text: span,

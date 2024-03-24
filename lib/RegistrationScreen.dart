@@ -131,7 +131,7 @@ class _HomePageState extends State<RegistrationScreen> {
                 width: 300,
                 child: TextField(
                   controller: textEditingController,
-                    decoration: const InputDecoration( fillColor: Colors.white, filled: true,hintText: "Enter Name & ID No..")
+                    decoration: const InputDecoration( fillColor: Colors.white, filled: true,hintText: "Enter Name - ID No..")
                 ),
               ),
               const SizedBox(height: 10,),
@@ -147,7 +147,7 @@ class _HomePageState extends State<RegistrationScreen> {
                   child: Text(
                     "Register",
                     style: TextStyle(
-                      color: Colors.black54, // Change this to the desired color
+                      color: Colors.black54,
                     ),
                   ))
             ],

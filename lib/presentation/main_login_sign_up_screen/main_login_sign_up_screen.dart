@@ -79,7 +79,7 @@ class MainLoginSignUpScreen extends StatelessWidget {
                   }
                 },
                 child: CustomOutlinedButton(
-                  text: "Sign In",
+                  text: "Sign Up",
                   margin: EdgeInsets.symmetric(horizontal: 10.h),
                 ),
               ),

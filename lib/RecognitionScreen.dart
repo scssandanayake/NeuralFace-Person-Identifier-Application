@@ -51,7 +51,7 @@ class _HomePageState extends State<RecognitionScreen> {
     }
   }
 
-  //Chooseing images using gallery
+  //Choosing images using gallery
   _imgFromGallery() async {
     XFile? pickedFile =
     await imagePicker.pickImage(source: ImageSource.gallery);
@@ -129,7 +129,7 @@ class _HomePageState extends State<RecognitionScreen> {
                 width: 300,
                 child: TextField(
                     controller: textEditingController,
-                    decoration: const InputDecoration( fillColor: Colors.white, filled: true,hintText: "Enter Name & Student ID..")
+                    decoration: const InputDecoration( fillColor: Colors.white, filled: true,hintText: "Enter Name - ID No..")
                 ),
               ),
               const SizedBox(height: 10,),
@@ -141,7 +141,12 @@ class _HomePageState extends State<RecognitionScreen> {
                       content: Text("Face Registered"),
                     ));
                   },style: ElevatedButton.styleFrom(backgroundColor:Colors.blue,minimumSize: const Size(200,40)),
-                  child: const Text("Register"))
+                  child: Text(
+                    "Register",
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
+                  ))
             ],
 
           ),
@@ -272,7 +277,7 @@ class FacePainter extends CustomPainter {
       canvas.drawRect(rectangle.location, p);
 
       TextSpan span = TextSpan(
-          style: const TextStyle(color: Colors.white, fontSize: 30),
+          style: const TextStyle(color: Colors.white, fontSize: 60),
           text: "${rectangle.name}  ${rectangle.distance.toStringAsFixed(2)}");
       TextPainter tp = TextPainter(
           text: span,
