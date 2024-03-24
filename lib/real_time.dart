@@ -422,7 +422,7 @@ class FaceDetectorPainter extends CustomPainter {
       );
 
       TextSpan span = TextSpan(
-          style: const TextStyle(color: Colors.white, fontSize: 40),
+          style: const TextStyle(color: Colors.white, fontSize: 25),
           text: "${face.name}  ${face.distance.toStringAsFixed(2)}");
       TextPainter tp = TextPainter(
           text: span,
