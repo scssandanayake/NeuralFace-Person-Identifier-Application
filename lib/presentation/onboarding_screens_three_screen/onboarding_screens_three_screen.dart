@@ -76,7 +76,7 @@ class OnboardingScreensThreeScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 31.v),
+                      SizedBox(height: 31.5.v),
 
 
                     ],
