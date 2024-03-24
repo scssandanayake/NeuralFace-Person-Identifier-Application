@@ -76,7 +76,7 @@ class OnboardingScreensTwoScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 31.v),
+                      SizedBox(height: 57.5.v),
 
                     ],
                   ),
